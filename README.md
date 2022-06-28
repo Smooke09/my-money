@@ -1,6 +1,6 @@
 # my-money-API
 
-Aplicativo de ciclo de pagamentos parte BACK_END COm autentição
+Aplicativo de ciclo de pagamentos parte BACK_END Com autentição
 
 <img src="https://i.imgur.com/UsaCijp.png">
 
@@ -20,13 +20,13 @@ Este projeto segue o curso de react <a href="https://www.udemy.com/course/react-
 ## Para rodar a aplicação
 
 - Para instalar os pacotes tanto na pasta backend, quanto nas pastas frontend
-        npm install --force
+  npm install --force
 - Para iniciar a aplicação backend
 
         npm run dev
 
 - Para iniciar o frontend
-        npm run dev
+  npm run dev
 
 | Serviço                                                                                         | Link                   |
 | ----------------------------------------------------------------------------------------------- | ---------------------- |
