@@ -1,7 +1,7 @@
 {
   "name": "my-money-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicativo de ciclo de pagamentos parte BACK_END Com autentição",
   "main": "src/loader.js",
   "scripts": {
     "dev": "nodemon",
@@ -24,5 +24,13 @@
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smooke09/my-money-API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Smooke09/my-money-API/issues"
+  },
+  "homepage": "https://github.com/Smooke09/my-money-API#readme"
 }
