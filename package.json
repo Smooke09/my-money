@@ -1,10 +1,14 @@
 {
   "name": "my-money-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "Aplicativo de ciclo de pagamentos parte BACK_END Com autentição",
   "main": "src/loader.js",
   "scripts": {
     "dev": "nodemon",
+    "heroku-postbuild": "npm run build",
     "production": "pm2 start src/loader.js --name my-money-backend"
   },
   "keywords": [],
