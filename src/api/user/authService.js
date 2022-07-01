@@ -4,11 +4,9 @@ const bcrypt = require("bcrypt");
 const User = require("./user");
 const env = require("../../.env");
 
-// Criptografia
 const emailRegex = /\S+@\S+\.\S+/;
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/;
 
-//MSG DE ERROR
 const sendErrorsFromDB = (res, dbErrors) => {
   const errors = [];
   _.forIn(dbErrors.errors, (error) => errors.push(error.message));
@@ -16,13 +14,14 @@ const sendErrorsFromDB = (res, dbErrors) => {
 };
 
 const login = (req, res, next) => {
+  console.log(req.body);
   const email = req.body.email || "";
   const password = req.body.password || "";
   User.findOne({ email }, (err, user) => {
     if (err) {
       return sendErrorsFromDB(res, err);
     } else if (user && bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign(user, env.authSecret, {
+      const token = jwt.sign({ ...user }, env.authSecret, {
         expiresIn: "1 day",
       });
       const { name, email } = user;
@@ -33,7 +32,6 @@ const login = (req, res, next) => {
   });
 };
 
-//validação
 const validateToken = (req, res, next) => {
   const token = req.body.token || "";
   jwt.verify(token, env.authSecret, function (err, decoded) {
@@ -41,7 +39,6 @@ const validateToken = (req, res, next) => {
   });
 };
 
-//Cadastro
 const signup = (req, res, next) => {
   const name = req.body.name || "";
   const email = req.body.email || "";
@@ -53,7 +50,7 @@ const signup = (req, res, next) => {
   if (!password.match(passwordRegex)) {
     return res.status(400).send({
       errors: [
-        "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-20.",
+        "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6 - 20.",
       ],
     });
   }
